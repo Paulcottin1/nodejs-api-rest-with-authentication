@@ -4,9 +4,11 @@ const mongoose = require('mongoose');
 const stuffRoutes = require('./routes/stuff');
 const userRoutes = require('./routes/user');
 
+require('dotenv').config();
+
 const app = express();
 
-mongoose.connect('mongodb+srv://paulcottin:130497@cluster0.vzo60.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+mongoose.connect(process.env.DATABASE_URL,
     { useNewUrlParser: true,
         useUnifiedTopology: true })
     .then(() => console.log('Connexion à MongoDB réussie !'))
